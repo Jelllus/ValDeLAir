@@ -1,0 +1,25 @@
+@import url('https://unpkg.com/leaflet/dist/leaflet.css');
+
+#map {
+  height: 600px;
+  width: 100%;
+}
+
+html, body {
+  height: 100%;  /* Assure que le `body` prend toute la hauteur de la page */
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Évite tout dépassement */
+  display: flex;
+  flex-direction: column;
+}
+
+app-root {
+  flex: 1; /* Fait en sorte que l'app prenne toute la place disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+.router-outlet {
+  flex: 1; /* Permet aux pages d'occuper toute la hauteur */
+}
