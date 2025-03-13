@@ -42,12 +42,27 @@ export class BaliseComponent implements AfterViewInit {
         const windIcon = L.divIcon({
           className: "wind-arrow",
           html: `<div style="
-            width: 50px; height: 50px;
+            width: 50px; height: 20px;
             display: flex; align-items: center; justify-content: center;
             transform: rotate(${balise.windDeg}deg);
-            font-size: 30px; text-align: center;">
-            ➤
-            </div>`,
+            position: relative;">
+
+            <!-- Manchon d'air -->
+            <div style="
+                width: 60px; height: 25px;
+                display: flex;
+                border-radius: 5px;
+                box-shadow: 0 0 3px rgba(0,0,0,0.5);
+                clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);">
+
+                <!-- Bandes rouges et blanches -->
+                <div style="flex: 1; background: red;"></div>
+                <div style="flex: 1; background: white;"></div>
+                <div style="flex: 1; background: red;"></div>
+                <div style="flex: 1; background: white;"></div>
+                <div style="flex: 1; background: red;"></div>
+            </div>
+          </div>`,
           iconSize: [50, 50]
         });
 
@@ -56,5 +71,15 @@ export class BaliseComponent implements AfterViewInit {
           .bindPopup(`Vent: ${balise.windSpeed} m/s (${balise.windDeg}°)`);
       });
     }
+    this.map.scrollWheelZoom.disable(); // Désactiver le zoom au scroll par défaut
+
+    // Activer le zoom au scroll seulement si Ctrl est enfoncé
+    this.map.on('wheel', (event: any) => {
+      if (event.originalEvent.ctrlKey) {
+        this.map.scrollWheelZoom.enable();
+      } else {
+        this.map.scrollWheelZoom.disable();
+      }
+    });
   }
 }

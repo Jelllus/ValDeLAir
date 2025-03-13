@@ -1,0 +1,28 @@
+#year {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligné à gauche */
+  justify-content: center; /* Centré verticalement */
+  padding-left: 20px; /* Ajoute un petit padding à gauche */
+  text-align: center;
+}
+
+#title-2025 {
+  font-size: 5vw; /* Taille de police responsive */
+  font-weight: bold;
+  color: white;
+}
+
+#title-2024 {
+  font-size: 5vw; /* Taille de police responsive */
+  font-weight: bold;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  #title-2025 {
+    font-size: 8vw; /* Augmente la taille du texte sur petits écrans */
+  }
+}
