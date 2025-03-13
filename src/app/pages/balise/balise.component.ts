@@ -1,6 +1,8 @@
 import { Component, AfterViewInit } from '@angular/core';
 
-let L: any;
+//Import sécurisé de Leaflet uniquement côté navigateur
+declare let L: any;
+
 if (typeof window !== 'undefined') {
   import('leaflet').then((leaflet) => {
     L = leaflet;
@@ -21,7 +23,9 @@ export class BaliseComponent implements AfterViewInit {
   async ngAfterViewInit(): Promise<void> {
     // Charger Leaflet dynamiquement uniquement côté client
     if (typeof window !== 'undefined') {
-      const L = await import('leaflet');
+      L = await import('leaflet');
+
+      L = L.default; //Assure que L contient bien Leaflet
       // Initialisation de la carte
       this.map = L.map('map').setView([44.09, 7.19], 12);
 
