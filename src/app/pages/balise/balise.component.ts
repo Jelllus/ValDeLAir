@@ -71,15 +71,5 @@ export class BaliseComponent implements AfterViewInit {
           .bindPopup(`Vent: ${balise.windSpeed} m/s (${balise.windDeg}°)`);
       });
     }
-    this.map.scrollWheelZoom.disable(); // Désactiver le zoom au scroll par défaut
-
-    // Activer le zoom au scroll seulement si Ctrl est enfoncé
-    this.map.on('wheel', (event: any) => {
-      if (event.originalEvent.ctrlKey) {
-        this.map.scrollWheelZoom.enable();
-      } else {
-        this.map.scrollWheelZoom.disable();
-      }
-    });
   }
 }
