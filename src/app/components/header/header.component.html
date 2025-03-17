@@ -1,6 +1,9 @@
 <header id="header">
-  <h1><a [routerLink]="['']">VAL DE L'AIR</a></h1>
-  <nav>
+  <div class="header-container">
+    <h1><a [routerLink]="['']">VAL DE L'AIR</a></h1>
+    <button id="menu-toggle" aria-label="Menu">&#9776;</button>
+  </div>
+  <nav id="nav-menu">
     <ul>
       <li><a [routerLink]="['/balises']">Balises</a></li>
       <li><a href="#contact">Contact</a></li>
