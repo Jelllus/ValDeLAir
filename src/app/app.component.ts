@@ -1,8 +1,8 @@
 import {Component, OnInit, OnDestroy, Renderer2, Inject} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import {ContactComponent} from './pages/contact/contact.component';
 import {DOCUMENT} from '@angular/common';
 
 @Component({
@@ -33,6 +33,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.loadScript('assets/index/js/breakpoints.min.js');
       this.loadScript('assets/index/js/util.js');
       this.loadScript('assets/index/js/main.js');
+      this.loadScript('https://cdn.tailwindcss.com');
+      this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js');
 
       this.renderer.addClass(document.body, 'is-preload');
     }

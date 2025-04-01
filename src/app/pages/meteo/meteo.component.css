@@ -1,0 +1,130 @@
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #333;
+}
+
+.iframe-section {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.section-title {
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.spotair-title {
+  background-color: #ff7700; /* Orange pour SpotAiR */
+}
+
+.meteo-title {
+  background-color: #4285f4; /* Bleu pour Météo Parapente */
+}
+
+.meteoblue-title {
+  background-color: #0066a4; /* Bleu foncé pour Meteoblue */
+}
+
+.paraglidingmap-title {
+  background-color: #2ecc71; /* Vert pour Paragliding Map */
+}
+
+.iframe-container {
+  width: 100%;
+  height: 100vh; /* Hauteur initiale */
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.section-header {
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  margin: 40px 0 20px;
+  text-align: center;
+  font-size: 1.8rem;
+  border-radius: 8px;
+}
+
+/* Style pour la section logo */
+.logo-section {
+  margin-bottom: 40px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo-container img {
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.logo-container a {
+  display: inline-block;
+  background-color: #0066a4;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.logo-container a:hover {
+  background-color: #004d7a;
+}
+
+.logo-description {
+  margin: 20px 0;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 768px) {
+  h1 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+  }
+
+  .section-title, .section-header {
+      font-size: 1.2rem;
+  }
+
+  .iframe-container {
+      height: 80vh; /* Hauteur réduite sur mobile */
+  }
+
+  .logo-container img {
+      max-width: 200px;
+  }
+}

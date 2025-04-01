@@ -1,2 +1,52 @@
 <div id="map"></div>
+<div class="bg-gray-100 p-6">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-center mb-10">Informations sur nos balises</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div *ngFor="let balise of balises" class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front bg-white p-4 flex flex-col">
+            <h2 class="text-xl font-bold mb-2 text-center">{{ balise.nom }}</h2>
+            <div class="flex-grow flex flex-col items-center">
+              <img [src]="balise.url_picture" [alt]="balise.nom" class="card-image rounded mb-3">
+              <div class="space-y-1 w-full">
+                <p><span class="font-semibold">Identification:</span> ffvl-{{ balise.idBalise }} / {{ balise.station_type }}-{{ balise.external_device_id }}</p>
+                <p><span class="font-semibold">Altitude:</span> {{ balise.altitude }} m</p>
+                <p><span class="font-semibold">Coordonnées GPS:</span> {{ balise.latitude }}, {{ balise.longitude }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card-back bg-blue-50 p-4 flex flex-col">
+            <h2 class="text-xl font-bold mb-4 text-center">Informations de contact</h2>
+            <div class="flex-grow space-y-3">
+              <p><span class="font-semibold">Contact:</span> {{ balise.contact_name }} </p>
+              <p><span class="font-semibold">Email:</span> {{ balise.contact_email_adr }} </p>
+              <p><span class="font-semibold">Téléphone:</span> {{ balise.contact_phone }} </p>
+              <p><span class="font-semibold">QR Code Balise FFVL:</span></p>
+              <div class="mt-4 flex justify-center">
+<!--                <img src="/placeholder.svg?height=150&width=150" alt="QR Code" class="w-32 h-32">-->
+                <div #qrcodeContainer class="qrcode" [attr.data-id]="balise.idBalise"></div>
+              </div>
+            </div>
+            <a [href]="'https://intranet.ffvl.fr/structure/48/balises/modifier/' + balise.idBalise"
+               target="_blank"
+               class="text-blue-500 underline flex items-center space-x-1">
+              <span>Modifier ces informations via l'intranet FFVL.</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 2.487a2.25 2.25 0 0 1 3.182 3.182l-1.181 1.181m-2.001 2.001L6.75 19.125H3.75v-3L14.318 5.257z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<iframe
+  src="https://balisemeteo.com/depart.php?dept=06"
+  width="100%"
+  height="100%"
+  style="border: none;">
+</iframe>

@@ -23,3 +23,41 @@ app-root {
 .router-outlet {
   flex: 1; /* Permet aux pages d'occuper toute la hauteur */
 }
+
+.flip-card {
+  perspective: 1000px;
+  height: 630PX;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.card-image {
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+  height: 350px;
+}
