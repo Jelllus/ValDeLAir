@@ -1,0 +1,11 @@
+<div class="year-list">
+  <button *ngFor="let year of years" (click)="goToYear(year)">
+    {{ year }}
+  </button>
+</div>
+
+<!-- Afficher l'année sélectionnée si elle est présente dans l'URL -->
+<div *ngIf="selectedYear">
+  <h2>Galerie de {{ selectedYear }}</h2>
+  <!-- Ici, tu affiches les photos correspondantes -->
+</div>
