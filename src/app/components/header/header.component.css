@@ -1,170 +1,227 @@
-/* Sections/Article */
+/* Header et navigation principale */
 header {
-  margin-bottom: 1em;
-}
-
-header p {
-  display: block;
-  margin: 1em 0 0 0;
-  padding: 0 0 0.5em 0;
-}
-
-#header {
   position: fixed;
-  z-index: 10000;
+  top: 0;
   left: 0;
-  top: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.10);
-  height: 3em;
-  line-height: 3em;
-  box-shadow: 0 0 0.15em 0 rgba(0, 0, 0, 0.1);
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
 
-#header h1 {
-  position: absolute;
-  left: 1em;
-  top: 0;
-  height: 3em;
-  line-height: 3em;
-  cursor: default;
-}
-
-#header h1 a {
-  font-size: 1.25em;
-}
-
-#header nav {
-  position: absolute;
-  right: 0.5em;
-  top: 0;
-  height: 3em;
-  line-height: 3em;
-}
-
-#header nav ul {
-  margin: 0;
-}
-
-#header nav ul li {
-  display: inline-block;
-  margin-left: 0.5em;
-  font-size: 0.9em;
-}
-
-#header nav ul li a {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  height: 3em;
-  line-height: 3em;
-  padding: 0 0.5em 0 0.5em;
-  outline: 0;
-}
-
-@media screen and (max-width: 736px) {
-  #header {
-    height: 2.5em;
-    line-height: 2.5em;
-  }
-
-  #header h1 {
-    text-align: center;
-    position: relative;
-    left: 0;
-    top: 0;
-    height: 2.5em;
-    line-height: 2.5em;
-  }
-
-  #header h1 a {
-    font-size: 1em;
-  }
-
-  #header nav {
-    display: none;
-  }
-}
-
-/* Conteneur flex pour aligner h1 et le bouton */
-.header-container {
+/* Navigation desktop - avec titre à gauche */
+.desktop-nav {
   display: flex;
+  justify-content: space-between; /* Changé de flex-end à space-between */
   align-items: center;
-  justify-content: space-between; /* Espace entre les éléments */
-  width: 100%;
-  height: 3em;
-  padding: 0 1em;
+  padding: 0 20px;
+  height: 72px;
 }
 
-.header-container button {
-  background-color: transparent;
-  font-size : 1em;
-  color: black;
+/* Style du titre du site */
+.site-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-title:hover {
+  color: #0066cc;
+}
+
+/* Menu desktop */
+.desktop-menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  height: 100%;
+}
+
+.desktop-menu li {
+  margin-left: 30px;
+}
+
+.desktop-menu a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  padding: 8px 0;
+  position: relative;
+}
+
+/* Effet de soulignement au survol pour le menu desktop */
+.desktop-menu a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0066cc;
+  transition: width 0.3s ease;
+}
+
+.desktop-menu a:hover {
+  color: #0066cc;
+}
+
+.desktop-menu a:hover::after {
+  width: 100%;
+}
+
+/* Conteneur du menu burger - caché par défaut sur desktop */
+.burger-menu-container {
+  display: none;
+  position: relative;
+  height: 20px;
 }
 
 /* Bouton burger */
-.menu-toggle {
-  display: none; /* Caché en desktop */
-  position: absolute;
-  right: 1em;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5em;
-  background: none;
+.burger-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  background: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
+  z-index: 1000;
 }
 
-/* Menu mobile */
-@media screen and (max-width: 736px) {
-  .menu-toggle {
-    display: block; /* Visible en mobile */
-  }
-
-  #header {
-    height: auto;
-    text-align: center;
-  }
-
-  #header nav {
-    display: none; /* Caché par défaut */
-    position: absolute;
-    top: 3em;
-    left: 0;
-    width: 100%;
-    text-align: left;
-  }
-
-  #header nav.active {
-    display: block; /* Affichage du menu lorsqu'il est activé */
-  }
-
-  #header nav ul {
-    display: block;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.10);
-  }
-
-  #header nav ul li {
-    display: block;
-    padding: 1em;
-    font-size: 1.2em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-  }
-
-  #header nav ul li a {
-    display: block;
-    width: 100%;
-  }
+/* Lignes du burger */
+.burger-line {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease;
 }
 
-/* En vue desktop, ne pas afficher le bouton burger */
-@media screen and (min-width: 737px) {
-  #menu-toggle {
-    display: none;  /* Cacher le bouton burger en desktop */
-  }
+/* Animation du burger quand ouvert */
+.burger-btn.active .burger-line:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
 }
 
+.burger-btn.active .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-btn.active .burger-line:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Overlay du menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Menu navigation mobile - avec icônes */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+/* Liste des éléments du menu */
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu li {
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu a {
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-menu a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Style des icônes - uniquement pour mobile */
+.mobile-menu i {
+  margin-right: 15px;
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Titre du site en version mobile */
+.mobile-site-title {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  z-index: 1000;
+  display: none; /* Caché par défaut, affiché uniquement sur mobile */
+}
+
+/* Contenu principal */
+.content {
+  padding: 20px;
+  margin-top: 80px;
+}
+
+/* Media query pour mobile */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none; /* Cache le menu desktop sur mobile */
+  }
+
+  .burger-menu-container {
+    display: block; /* Affiche le menu burger sur mobile */
+  }
+
+  .mobile-site-title {
+    display: block; /* Affiche le titre du site en version mobile */
+  }
+}

@@ -1,14 +1,43 @@
-<header id="header">
-  <div class="header-container">
-    <h1><a [routerLink]="['']">VAL DE L'AIR</a></h1>
-    <button id="menu-toggle" aria-label="Menu">&#9776;</button>
-  </div>
-  <nav id="nav-menu">
-    <ul>
+<header>
+  <!-- Navigation desktop - avec titre à gauche -->
+  <nav class="desktop-nav">
+    <!-- Titre du site à gauche -->
+    <a href="#" class="site-title">VAL DE L'AIR</a>
+
+    <!-- Menu à droite -->
+    <ul class="desktop-menu">
       <li><a [routerLink]="['/balises']">Balises</a></li>
       <li><a [routerLink]="['/meteo']">Météo</a></li>
       <li><a [routerLink]="['/partenaires']">Partenaires</a></li>
+      <li><a [routerLink]="['/bureau']">Bureau</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
+
+<!-- Menu burger pour mobile uniquement - avec icônes -->
+<div class="burger-menu-container">
+  <!-- Titre du site en version mobile -->
+  <a href="#" class="mobile-site-title">VAL DE L'AIR</a>
+
+  <!-- Bouton burger -->
+  <button class="burger-btn" aria-label="Menu" aria-expanded="false">
+    <div class="burger-line"></div>
+    <div class="burger-line"></div>
+    <div class="burger-line"></div>
+  </button>
+
+  <!-- Overlay du menu -->
+  <div class="menu-overlay"></div>
+
+  <!-- Éléments du menu mobile avec icônes -->
+  <nav class="mobile-menu">
+    <ul>
+      <li><a [routerLink]="['/balises']"><i class="fas fa-tag"></i>Balise</a></li>
+      <li><a [routerLink]="['/meteo']"><i class="fas fa-cloud-sun"></i>Météo</a></li>
+      <li><a [routerLink]="['/partenaires']"><i class="fas fa-handshake"></i>Partenaires</a></li>
+      <li><a [routerLink]="['/bureau']"><i class="fas fa-id-badge"></i>Bureau</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+    </ul>
+  </nav>
+</div>

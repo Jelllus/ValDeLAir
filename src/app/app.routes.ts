@@ -7,6 +7,8 @@ import { MeteoComponent } from './pages/meteo/meteo.component';
 import { PartenairesComponent } from './pages/partenaires/partenaires.component';
 import { GaleriesComponent } from './components/galeries/galeries.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { BureauComponent } from './pages/bureau/bureau.component';
+
 
 export const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -14,6 +16,7 @@ export const routes: Routes = [
   { path: 'balises', component: BaliseComponent },
   { path: 'meteo', component: MeteoComponent },
   { path: 'partenaires', component: PartenairesComponent },
+  { path: 'bureau', component: BureauComponent },
   { path: 'galeries/:year', component: GaleriesComponent }, // Route dynamique pour une année spécifique
   { path: 'galeries', component: GaleriesComponent }, // Page galerie principale
   { path: '**', component: NotFoundComponent },
