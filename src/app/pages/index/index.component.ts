@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, HostListener, Renderer2, OnInit } from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ContactComponent} from '../contact/contact.component';
 import { CommonModule } from '@angular/common';

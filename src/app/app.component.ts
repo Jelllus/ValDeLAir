@@ -22,13 +22,6 @@ export class AppComponent implements OnInit, OnDestroy {
         try {
           const scriptPromises = [
             this.loadScript('assets/index/js/jquery.min.js'),
-            this.loadScript('assets/index/js/jquery.poptrox.min.js'),
-            this.loadScript('assets/index/js/jquery.scrolly.min.js'),
-            this.loadScript('assets/index/js/jquery.scrollex.min.js'),
-            this.loadScript('assets/index/js/browser.min.js'),
-            this.loadScript('assets/index/js/breakpoints.min.js'),
-            this.loadScript('assets/index/js/util.js'),
-            this.loadScript('assets/index/js/main.js'),
             this.loadScript('https://cdn.tailwindcss.com'),
             this.loadScript('assets/balise/js/qrcode.min.js'),
           ];
