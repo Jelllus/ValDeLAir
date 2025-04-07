@@ -31,6 +31,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "src/assets/index/js/browser.min.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,
