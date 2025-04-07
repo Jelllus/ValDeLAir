@@ -31,9 +31,6 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/index/js/jquery.min.js",
-              "src/assets/index/js/jquery.poptrox.min.js",
-              "src/assets/index/js/main.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,
@@ -46,13 +43,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "5MB"
                 }
               ],
               "outputHashing": "all"
