@@ -25,7 +25,6 @@
               <p><span class="font-semibold">Téléphone:</span> {{ balise.contact_phone }} </p>
               <p><span class="font-semibold">QR Code Balise FFVL:</span></p>
               <div class="mt-4 flex justify-center">
-<!--                <img src="/placeholder.svg?height=150&width=150" alt="QR Code" class="w-32 h-32">-->
                 <div #qrcodeContainer class="qrcode" [attr.data-id]="balise.idBalise"></div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList  } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -44,7 +44,7 @@ export class BaliseComponent implements OnInit, AfterViewInit {
   private apiBalises = 'https://data.ffvl.fr/api/?base=balises&r=list&mode=json&key=9a246aaff1789ca174c65f86f1dc035c'; // infos balises (coordonnées)
   private balisesFiltre = ['192', '157', '2812'];
 
-constructor(private http: HttpClient) {}
+constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.fetchBalises();
@@ -58,6 +58,11 @@ constructor(private http: HttpClient) {}
                   ...balise,
                   station_type: balise.station_type.toLowerCase()
                   }));
+        // ✅ Vue mise à jour → éléments #qrcodeContainer prêts
+        this.cdr.detectChanges();
+
+        // ✅ QR codes générés après rendu
+        this.generateQRCodes();
       },
       (error: any) => console.error('Erreur lors de la récupération des balises', error)
     );
@@ -151,15 +156,15 @@ constructor(private http: HttpClient) {}
   }
 
   generateQRCodes(): void {
-      this.qrcodeContainers.forEach((qrcodeContainer, index) => {
-        const balise = this.balises[index];
-        if (!balise) return; // Sécurité en cas de désynchronisation
+    this.qrcodeContainers.forEach((qrcodeContainer, index) => {
+      const balise = this.balises[index];
+      if (!balise) return; // Sécurité en cas de désynchronisation
 
-        new QRCode(qrcodeContainer.nativeElement, {
-          text: `https://www.balisemeteo.com/balise.php?idBalise=${balise.idBalise}`,
-          width: 200,
-          height: 200
-        });
+      new QRCode(qrcodeContainer.nativeElement, {
+        text: `https://www.balisemeteo.com/balise.php?idBalise=${balise.idBalise}`,
+        width: 200,
+        height: 200
       });
-    }
+    });
+  }
 }

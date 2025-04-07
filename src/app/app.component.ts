@@ -17,41 +17,52 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private renderer: Renderer2, @Inject(DOCUMENT) private document: Document) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     if (typeof document !== 'undefined') {
-      //css
-      this.loadCSS('assets/index/css/main.css');
-      this.loadCSS('assets/index/css/noscript.css');
-      this.loadCSS('assets/index/css/fontawesome-all.min.css');
+        try {
+          const scriptPromises = [
+            this.loadScript('assets/index/js/jquery.min.js'),
+            this.loadScript('assets/index/js/jquery.poptrox.min.js'),
+            this.loadScript('assets/index/js/jquery.scrolly.min.js'),
+            this.loadScript('assets/index/js/jquery.scrollex.min.js'),
+            this.loadScript('assets/index/js/browser.min.js'),
+            this.loadScript('assets/index/js/breakpoints.min.js'),
+            this.loadScript('assets/index/js/util.js'),
+            this.loadScript('assets/index/js/main.js'),
+            this.loadScript('https://cdn.tailwindcss.com'),
+            this.loadScript('assets/balise/js/qrcode.min.js'),
+          ];
 
-      //script
-      this.loadScript('assets/index/js/jquery.min.js');
-      this.loadScript('assets/index/js/jquery.poptrox.min.js');
-      this.loadScript('assets/index/js/jquery.scrolly.min.js');
-      this.loadScript('assets/index/js/jquery.scrollex.min.js');
-      this.loadScript('assets/index/js/browser.min.js');
-      this.loadScript('assets/index/js/breakpoints.min.js');
-      this.loadScript('assets/index/js/util.js');
-      this.loadScript('assets/index/js/main.js');
-      this.loadScript('https://cdn.tailwindcss.com');
-      this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js');
+          await Promise.all([...scriptPromises]);
 
-      this.renderer.addClass(document.body, 'is-preload');
-    }
+          // Tous les scripts/CSS sont chargés
+          //this.renderer.removeClass(document.body, 'is-preload'); // ou retire un loader, etc.
+          console.log('✅ Tous les scripts et CSS ont été chargés');
+        } catch (err) {
+          console.error('Erreur lors du chargement des assets :', err);
+        }
+      }
   }
 
-  private loadCSS(href: string): void {
-    const link = this.renderer.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    this.document.head.appendChild(link);
+  private loadCSS(href: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const link = this.renderer.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.onload = () => resolve();
+      link.onerror = () => reject(`Erreur chargement CSS: ${href}`);
+      this.renderer.appendChild(document.head, link);
+    });
   }
 
-  private loadScript(src: string): void {
-    const script = this.renderer.createElement('script');
-    script.src = src;
-    script.async = true;
-    this.document.body.appendChild(script);
+  private loadScript(src: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const script = this.renderer.createElement('script');
+      script.src = src;
+      script.onload = () => resolve();
+      script.onerror = () => reject(`Erreur chargement script: ${src}`);
+      this.renderer.appendChild(document.body, script);
+    });
   }
 
   ngOnDestroy(): void {

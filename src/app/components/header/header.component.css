@@ -6,7 +6,7 @@ header {
   width: 100%;
   background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  z-index: 9999;
 }
 
 /* Navigation desktop - avec titre à gauche */
@@ -77,7 +77,7 @@ header {
 .burger-menu-container {
   display: none;
   position: relative;
-  height: 20px;
+  height: 72px;
 }
 
 /* Bouton burger */

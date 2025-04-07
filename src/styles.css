@@ -174,3 +174,7 @@ footer {
     padding-top: 0;
   }
 }
+
+body.is-preload app-root {
+  display: none;
+}

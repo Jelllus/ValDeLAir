@@ -1,0 +1,74 @@
+.content header {
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.content header h2 {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0 0 0.5em 0;
+}
+
+.content header p {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.box {
+  background: #fff;
+  border-radius: 0.35em;
+  box-shadow: 0 0 0 1px #ccc;
+  margin: 0 auto;
+  padding: 2em;
+  max-width: 800px;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.field {
+  flex: 1 1 100%;
+}
+
+.field.half {
+  flex: 1 1 calc(50% - 0.5em);
+}
+
+textarea,
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  border-radius: 0.35em;
+  font-size: 1em;
+}
+
+.actions.special {
+  margin-top: 1.5em;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+}
+
+.actions.special li {
+  display: inline-block;
+}
+
+.actions.special input[type="submit"] {
+  background: #007BFF;
+  border: none;
+  color: white;
+  padding: 0.75em 2em;
+  border-radius: 0.35em;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s ease;
+}
+
+.actions.special input[type="submit"]:hover {
+  background: #0056b3;
+}
