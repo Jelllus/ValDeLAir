@@ -1924,3 +1924,26 @@ body.is-touch .main {
   opacity: 1;
   transform: none;
 }
+
+.button.down {
+  animation: bounce-down 2s infinite;
+}
+
+@keyframes bounce-down {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(8px);
+  }
+  60% {
+    transform: translateY(4px);
+  }
+}
+
+.button.down::after {
+  content: '⬇'; /* Ou une flèche custom, une icône, ou rien du tout */
+  display: inline-block;
+  margin-left: 0.5em;
+  animation: bounce-down 2s infinite;
+}

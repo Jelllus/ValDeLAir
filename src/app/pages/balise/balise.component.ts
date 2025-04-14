@@ -79,10 +79,39 @@ constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(this.map);
 
+      if (this.isMobile()) {
+        this.restrictToTwoFingersOnMobile();
+      }
       this.fetchAndDisplayBalises();
-
-      this.generateQRCodes();
     }
+  }
+
+  private isMobile(): boolean {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  private restrictToTwoFingersOnMobile(): void {
+    this.map.scrollWheelZoom.disable();
+    this.map.dragging.disable();
+    this.map.touchZoom.disable();
+    this.map.doubleClickZoom.disable();
+
+    const container = this.map.getContainer();
+
+    container.addEventListener('touchstart', (e: TouchEvent) => {
+      if (e.touches.length === 2) {
+        this.map.dragging.enable();
+        this.map.touchZoom.enable();
+      } else {
+        this.map.dragging.disable();
+        this.map.touchZoom.disable();
+      }
+    });
+
+    container.addEventListener('touchend', () => {
+      this.map.dragging.disable();
+      this.map.touchZoom.disable();
+    });
   }
 
   async fetchAndDisplayBalises() {
