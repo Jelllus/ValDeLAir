@@ -24,6 +24,9 @@ jobs:
 
       - name: 🛠️ Build Angular app (production)
         run: npm run build -- --project ValDeLAir --configuration production
+      
+      - name: 📂 Check dist contents
+        run: ls -la dist/ValDeLAir/browser/
 
       - name: 📝 Create .htaccess file
         run: |
