@@ -1,0 +1,54 @@
+name: 🚀 Deploy Angular to OVH via FTP
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # 🔘 Lancement manuel possible
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 📝 Create .htaccess file
+        run: |
+          echo '<IfModule mod_rewrite.c>
+          RewriteEngine On
+          RewriteBase /
+          RewriteRule ^index\.html$ - [L]
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteCond %{REQUEST_FILENAME} !-d
+          RewriteRule . /index.html [L]
+          </IfModule>' > dist/ValDeLAir/browser/.htaccess
+
+      - name: 🛠️ Build Angular app (production)
+        run: npm run build --configuration production
+
+      - name: 🚀 Upload to OVH via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/ValDeLAir/browser/
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}
+
+      - name: 📧 Notify success
+        if: success()
+        run: echo "✅ Déploiement réussi !"
+
+      - name: ❌ Notify failure
+        if: failure()
+        run: echo "❌ Échec du déploiement."
