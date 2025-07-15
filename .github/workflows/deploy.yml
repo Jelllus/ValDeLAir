@@ -26,7 +26,7 @@ jobs:
         run: npm run build -- --project ValDeLAir --configuration production
 
       - name: 📂 Check dist contents
-        run: ls -la dist
+        run: ls -la dist/val-de-lair
 
       - name: 📝 Create .htaccess file
         run: |
@@ -37,7 +37,7 @@ jobs:
           RewriteCond %{REQUEST_FILENAME} !-f
           RewriteCond %{REQUEST_FILENAME} !-d
           RewriteRule . /index.html [L]
-          </IfModule>' > dist/ValDeLAir/browser/.htaccess
+          </IfModule>' > dist/val-de-lair/browser/.htaccess
 
       - name: 🚀 Upload to OVH via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -45,7 +45,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/ValDeLAir/browser/
+          local-dir: dist/val-de-lair/browser/
           server-dir: ${{ secrets.FTP_TARGET_DIR }}
 
       - name: 📧 Notify success
