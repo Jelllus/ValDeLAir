@@ -26,7 +26,7 @@ jobs:
         run: npm run build -- --project ValDeLAir --configuration production
 
       - name: 📂 Check dist contents
-        run: ls -la
+        run: ls -la dist
 
       - name: 📝 Create .htaccess file
         run: |
