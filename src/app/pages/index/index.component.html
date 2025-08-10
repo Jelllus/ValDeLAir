@@ -44,7 +44,7 @@
     <div class="gallery">
       <article *ngFor="let img of images">
         <a href="#" (click)="openLightbox(img.full); $event.preventDefault()">
-          <img [src]="img.thumb" [alt]="img.title" [title]="img.title" />
+          <img [src]="img.thumb" [alt]="img.title" [title]="img.title" class="imgIndex"/>
         </a>
       </article>
     </div>
