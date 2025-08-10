@@ -720,6 +720,12 @@ textarea {
   width: 100%;
 }
 
+img.logo {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .image.featured {
   display: block;
   width: 100%;
