@@ -2,6 +2,7 @@ import { Component, HostListener, Renderer2, OnInit } from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ContactComponent} from '../contact/contact.component';
 import { CommonModule } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-index',
@@ -14,7 +15,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit {
+
+  constructor(private titleService: Title, private metaService: Meta) { }
+
    images = [
       {
         thumb: '/assets/evenements/img/thumbs/salonIDWeekEnd.jpg',
@@ -47,6 +51,14 @@ export class IndexComponent {
         title: 'Bent IX'
       }
     ];
+
+    ngOnInit(): void {
+      this.titleService.setTitle('Baptême et Vol en Parapente à la Colmiane - Valdelair');
+      this.metaService.updateTag({
+        name: 'description',
+        content: 'Découvrez le plaisir du parapente avec Valdelair : baptêmes biplace, initiation, stages et vols découverte près de la Colmiane. Réservez votre vol !'
+      });
+    }
 
     lightboxVisible = false;
     lightboxImage = '';

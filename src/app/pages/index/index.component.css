@@ -23,6 +23,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
+  margin : 0px;
   line-height: 1;
 }
 
@@ -1629,7 +1630,7 @@ body {
   -ms-justify-content: center;
   justify-content: center;
   text-align: center;
-  padding: 3em 0 3em 0;
+  padding: 0em 0 3em 0;
 }
 
 .main.style1 h2 {
@@ -1663,7 +1664,7 @@ body {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  padding: 3em 0 3em 0;
+  padding: 0em 0 3em 0;
   overflow: hidden;
 }
 
