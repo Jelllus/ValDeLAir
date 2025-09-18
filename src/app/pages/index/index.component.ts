@@ -20,15 +20,15 @@ export class IndexComponent implements OnInit {
   constructor(private titleService: Title, private metaService: Meta) { }
 
    images = [
+     {
+             thumb: '/assets/index/img/thumbs/5-10.jpeg',
+             full: '/assets/index/img/fulls/5-10.jpeg',
+             title: 'Parapente & Montagne'
+           },
       {
         thumb: '/assets/evenements/img/thumbs/salonIDWeekEnd.jpg',
         full: '/assets/evenements/img/fulls/salonIDWeekEnd.jpg',
         title: 'Salon ID WeekEnd'
-      },
-      {
-        thumb: '/assets/index/img/thumbs/02.jpg',
-        full: '/assets/index/img/fulls/02.jpg',
-        title: 'Airchitecture II'
       },
       {
         thumb: '/assets/index/img/thumbs/03.jpg',
