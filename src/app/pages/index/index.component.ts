@@ -21,8 +21,8 @@ export class IndexComponent implements OnInit {
 
    images = [
      {
-             thumb: '/assets/index/img/thumbs/5-10.jpeg',
-             full: '/assets/index/img/fulls/5-10.jpeg',
+             thumb: '/assets/evenements/img/thumbs/5-10.jpeg',
+             full: '/assets/evenements/img/fulls/5-10.jpeg',
              title: 'Parapente & Montagne'
            },
       {
