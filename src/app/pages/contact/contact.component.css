@@ -72,3 +72,10 @@ input[type="email"] {
 .actions.special input[type="submit"]:hover {
   background: #0056b3;
 }
+
+.contact-image {
+  display: block;
+  margin: 0 auto 1rem auto;
+  max-width: 20%; /* ajuste selon ton image */
+  height: auto;
+}
