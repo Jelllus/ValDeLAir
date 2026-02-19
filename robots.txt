@@ -1,0 +1,34 @@
+# ==================================================
+# Robots.txt - Parapente Val de L'air
+# https://www.parapente-valdelair.fr/
+# ==================================================
+
+User-agent: *
+
+# Autoriser l'exploration complète du site
+Allow: /
+
+# Bloquer les dossiers techniques si présents
+Disallow: /admin/
+Disallow: /backend/
+Disallow: /private/
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /.git/
+
+# Bloquer les paramètres inutiles
+Disallow: /*?*
+Disallow: /*?utm_*
+
+# Autoriser explicitement les assets importants
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Sitemap
+Sitemap: https://www.parapente-valdelair.fr/sitemap.xml
